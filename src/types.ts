@@ -1,0 +1,1 @@
+export type InvitationState = 'intro' | 'invitation' | 'accepted' | 'declined'

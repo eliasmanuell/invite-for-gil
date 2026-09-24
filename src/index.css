@@ -1,0 +1,316 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Playfair Display', 'Georgia', serif;
+  --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+
+  --color-wine-950: #23060f;
+  --color-wine-900: #3a0b1b;
+  --color-wine-800: #521327;
+  --color-burgundy: #6d1733;
+  --color-rose-deep: #b02a58;
+  --color-rose: #e14b80;
+  --color-rose-light: #f48cb2;
+  --color-blush: #ffd6e3;
+  --color-gold: #d7b26a;
+  --color-gold-light: #f3dda9;
+  --color-cream: #fdf5ee;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  font-family: var(--font-sans);
+  background: var(--color-wine-950);
+  color: var(--color-cream);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(225, 75, 128, 0.45);
+  color: #fff;
+}
+
+/* ============ Background ============ */
+.romantic-bg {
+  background:
+    radial-gradient(120% 90% at 50% -10%, #6d1733 0%, transparent 55%),
+    radial-gradient(90% 70% at 88% 112%, #521327 0%, transparent 60%),
+    radial-gradient(80% 60% at 0% 100%, #3a0b1b 0%, transparent 55%),
+    linear-gradient(160deg, #2a0710 0%, #3a0b1b 45%, #23060f 100%);
+}
+
+/* ============ Glass card ============ */
+.glass {
+  background: linear-gradient(
+    160deg,
+    rgba(255, 244, 248, 0.11),
+    rgba(255, 214, 227, 0.05) 60%,
+    rgba(255, 255, 255, 0.09)
+  );
+  backdrop-filter: blur(22px) saturate(140%);
+  -webkit-backdrop-filter: blur(22px) saturate(140%);
+  border: 1px solid rgba(255, 236, 244, 0.22);
+  box-shadow:
+    0 30px 80px -30px rgba(0, 0, 0, 0.7),
+    inset 0 0 0 1px rgba(255, 214, 227, 0.06),
+    inset 0 0 48px rgba(255, 120, 160, 0.1);
+}
+
+.glass-chip {
+  background: rgba(255, 246, 250, 0.08);
+  border: 1px solid rgba(255, 230, 240, 0.18);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.text-gradient-rose {
+  background: linear-gradient(
+    100deg,
+    #f3dda9 0%,
+    #f48cb2 38%,
+    #e14b80 70%,
+    #d7b26a 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-glow-soft {
+  text-shadow: 0 0 24px rgba(244, 140, 178, 0.35);
+}
+
+.gold-rule {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(215, 178, 106, 0.75),
+    rgba(243, 221, 169, 0.9),
+    rgba(215, 178, 106, 0.75),
+    transparent
+  );
+}
+
+/* Prevent horizontal overflow everywhere */
+*,
+*::before,
+*::after {
+  overflow-wrap: break-word;
+}
+
+/* ============ Ambient keyframes ============ */
+@keyframes float-up {
+  0% {
+    transform: translate3d(0, 106vh, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: var(--o, 0.45);
+  }
+  50% {
+    transform: translate3d(var(--tx1, 2vw), 52vh, 0)
+      rotate(var(--rot, 8deg));
+  }
+  100% {
+    transform: translate3d(var(--tx2, -3vw), -14vh, 0)
+      rotate(calc(var(--rot, 8deg) * -1));
+    opacity: var(--o, 0.45);
+  }
+}
+
+@keyframes petal-fall {
+  0% {
+    transform: translate3d(0, -8vh, 0) rotate(0deg);
+    opacity: 0;
+  }
+  8% {
+    opacity: var(--o, 0.5);
+  }
+  50% {
+    transform: translate3d(var(--tx1, -4vw), 48vh, 0)
+      rotate(var(--rot, 160deg));
+    opacity: var(--o, 0.55);
+  }
+  100% {
+    transform: translate3d(var(--tx2, 5vw), 110vh, 0)
+      rotate(calc(var(--rot, 160deg) + 180deg));
+    opacity: var(--o, 0.45);
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: scale(0.7);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes drift-blob {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(4vw, -3vh, 0) scale(1.12);
+  }
+  66% {
+    transform: translate3d(-4vw, 3vh, 0) scale(0.94);
+  }
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translate3d(0, -8vh, 0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(var(--tx, 6vw), 108vh, 0)
+      rotate(var(--rot, 720deg));
+    opacity: 0.9;
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 0 rgba(225, 75, 128, 0.4),
+      0 10px 30px -8px rgba(225, 75, 128, 0.55),
+      inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  }
+  50% {
+    box-shadow:
+      0 0 26px 7px rgba(225, 75, 128, 0.5),
+      0 14px 38px -8px rgba(225, 75, 128, 0.7),
+      inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  }
+}
+
+@keyframes shine-sweep {
+  0% {
+    transform: translateX(-160%) skewX(-16deg);
+  }
+  100% {
+    transform: translateX(260%) skewX(-16deg);
+  }
+}
+
+@keyframes caret-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ============ Animation utility classes ============ */
+.animate-float-up {
+  animation-name: float-up;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-duration: var(--dur, 26s);
+  animation-delay: var(--delay, 0s);
+  will-change: transform, opacity;
+}
+
+.animate-petal-fall {
+  animation-name: petal-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-duration: var(--dur, 15s);
+  animation-delay: var(--delay, 0s);
+  will-change: transform, opacity;
+}
+
+.animate-twinkle {
+  animation-name: twinkle;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: var(--dur, 3s);
+  animation-delay: var(--delay, 0s);
+  will-change: transform, opacity;
+}
+
+.animate-drift-blob {
+  animation-name: drift-blob;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: var(--dur, 22s);
+  animation-delay: var(--delay, 0s);
+  will-change: transform;
+}
+
+.animate-confetti {
+  animation-name: confetti-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-duration: var(--dur, 4s);
+  animation-delay: var(--delay, 0s);
+  will-change: transform, opacity;
+}
+
+.pulse-glow {
+  animation: pulse-glow 2.4s ease-in-out infinite;
+}
+
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  inset: -40% auto auto -60%;
+  width: 55%;
+  height: 240%;
+  background: linear-gradient(
+    100deg,
+    transparent,
+    rgba(255, 255, 255, 0.5),
+    transparent
+  );
+  transform: translateX(-160%) skewX(-16deg);
+  animation: shine-sweep 3.6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.caret-blink {
+  animation: caret-blink 1s steps(1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float-up,
+  .animate-petal-fall,
+  .animate-twinkle,
+  .animate-drift-blob,
+  .animate-confetti,
+  .pulse-glow,
+  .btn-shine::after,
+  .caret-blink {
+    animation: none !important;
+  }
+}
