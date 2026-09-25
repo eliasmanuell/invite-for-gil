@@ -67,9 +67,9 @@ export default function Intro({ onDone }: IntroProps) {
               opacity: 0,
               y: -14,
               filter: 'blur(12px)',
-              transition: { duration: 0.45, ease: 'easeIn' },
+              transition: { duration: 0.7, ease: 'easeIn' },
             }}
-            transition={{ duration: 0.7, ease: EASE_OUT }}
+            transition={{ duration: 1.1, ease: EASE_OUT }}
           >
             {LINES[index].text}
             <motion.span

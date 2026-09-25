@@ -13,6 +13,25 @@ export default function App() {
 
   const goToInvitation = useCallback(() => setState('invitation'), [])
 
+  const handleAccept = useCallback(() => {
+    const formData = new URLSearchParams()
+    formData.set('form-name', 'convite-aceite')
+    formData.set('evento', 'O convite foi aceito pela pessoa que o recebeu.')
+
+    void fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: formData.toString(),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          console.error('Acceptance notification failed', response.status)
+        }
+      })
+      .catch(() => undefined)
+    setState('accepted')
+  }, [])
+
   return (
     <div className="romantic-bg relative min-h-dvh w-full overflow-x-hidden">
       <FloatingElements />
@@ -27,7 +46,7 @@ export default function App() {
           {state === 'invitation' && (
             <InvitationCard
               key="invitation"
-              onAccept={() => setState('accepted')}
+              onAccept={handleAccept}
               onDecline={() => setState('declined')}
             />
           )}

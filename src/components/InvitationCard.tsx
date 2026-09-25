@@ -139,14 +139,6 @@ export default function InvitationCard({ onAccept, onDecline }: InvitationCardPr
         <EscapeButton anchor={anchorRef} onDecline={onDecline} />
       </div>
 
-      <motion.button
-        type="button"
-        onClick={onDecline}
-        className="relative z-20 mt-9 text-xs font-light tracking-wide text-blush/45 underline decoration-dotted underline-offset-4 transition-colors hover:text-blush/75"
-        variants={fadeUp}
-      >
-        Se realmente quiseres recusar, podes tocar aqui.
-      </motion.button>
     </motion.div>
   )
 }
